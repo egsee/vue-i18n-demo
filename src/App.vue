@@ -1,17 +1,31 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="switch-language">
+        <select name="lang" @change="onLangChange">
+            <option value="en-US" :selected="$i18n.locale == 'en-US'">English</option>
+            <option value="zh-CN" :selected="$i18n.locale == 'zh-CN'">中文</option>
+        </select>
+    </div>
+    <h3>{{ $t('pages.test.smallfriend') }}</h3>
+    <h3>{{ $t('pages.test.greet') }}</h3>
+    <h3>{{ $t('pages.test.hello-i18n') }}</h3>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+      return {
+
+      }
+  },
+  methods:{
+      onLangChange(val){
+          this.$i18n.locale = val.srcElement.value
+      }
   }
 }
 </script>
